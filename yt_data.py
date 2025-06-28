@@ -6,7 +6,7 @@ from youtube_transcript_api import YouTubeTranscriptApi, TranscriptsDisabled
 from whisper_api import transcribe
 
 # Replace with your YouTube API Key
-API_KEY = "AIzaSyBXmI0RLJ501WkqDeE_2IJw98akI2zQUoQ"
+API_KEY = "gmail key"
 YOUTUBE = build("youtube", "v3", developerKey=API_KEY)
 
 
