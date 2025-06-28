@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>YouTube Transcript & Summary</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+</head>
+<body>
+  <div class="app-container">
+    <header>
+      <h1>YouTube Transcript & Summary</h1>
+    </header>
+
+    <main>
+      <div class="input-section">
+        <form id="youtube-form">
+          <div class="input-group">
+            <input
+              type="text"
+              id="video-url"
+              name="video_url"
+              placeholder="Enter YouTube video URL"
+              required
+            />
+            <button type="submit" id="submit-btn">Process</button>
+          </div>
+
+          <div class="options-group">
+            <!-- Summary Type Option -->
+            <div class="option">
+              <label>Summary Type:</label>
+              <div class="summary-type-buttons">
+                <button type="button" class="summary-type-btn active" data-type="paragraph">
+                  Summary
+                </button>
+                <button type="button" class="summary-type-btn" data-type="points">
+                  Bullet Points
+                </button>
+              </div>
+              <input type="hidden" id="summary-type" name="summary_type" value="paragraph" />
+            </div>
+            <!-- Summary Length Option -->
+            <div class="option">
+              <label>Summary Length:</label>
+              <div class="length-buttons">
+                <button type="button" class="length-btn" data-length="small">
+                  Small
+                </button>
+                <button type="button" class="length-btn active" data-length="medium">
+                  Medium
+                </button>
+                <button type="button" class="length-btn" data-length="large">
+                  Large
+                </button>
+              </div>
+              <input type="hidden" id="summary-length" name="summary_length" value="medium" />
+            </div>
+          </div>
+        </form>
+      </div>
+
+      <div class="results-section">
+        <div class="loading-spinner" id="loading">
+          <div class="spinner"></div>
+          <p>Processing video...</p>
+        </div>
+
+        <div class="results-container" id="results" style="display: none;">
+          <div class="tabs">
+            <button class="tab-btn active" data-tab="summary-tab">Summary</button>
+            <button class="tab-btn" data-tab="transcript-tab">Transcript</button>
+          </div>
+
+          <div class="tab-content">
+            <!-- Summary tab -->
+            <div id="summary-tab" class="tab-pane active">
+              <div class="result-header">
+                <h3>Summary</h3>
+                <div class="action-buttons">
+                  <div class="format-buttons">
+                    <button type="button" class="format-btn summary-format-btn active" data-format="text">
+                      Plain Text
+                    </button>
+                    <button type="button" class="format-btn summary-format-btn" data-format="markdown">
+                      Markdown
+                    </button>
+                    <button type="button" class="format-btn summary-format-btn" data-format="json">
+                      JSON
+                    </button>
+                  </div>
+                  <button id="download-summary" class="download-btn">
+                    <i class="fas fa-download"></i> Download
+                  </button>
+                </div>
+              </div>
+              <div class="result-content">
+                <pre id="summary-content"></pre>
+              </div>
+            </div>
+
+            <!-- Transcript tab -->
+            <div id="transcript-tab" class="tab-pane">
+              <div class="result-header">
+                <h3>Transcript</h3>
+                <div class="action-buttons">
+                  <div class="format-buttons">
+                    <button type="button" class="format-btn transcript-format-btn active" data-format="text">
+                      Plain Text
+                    </button>
+                    <button type="button" class="format-btn transcript-format-btn" data-format="markdown">
+                      Markdown
+                    </button>
+                    <button type="button" class="format-btn transcript-format-btn" data-format="json">
+                      JSON
+                    </button>
+                  </div>
+                  <button id="download-transcript" class="download-btn">
+                    <i class="fas fa-download"></i> Download
+                  </button>
+                </div>
+              </div>
+              <div class="result-content">
+                <pre id="transcript-content"></pre>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+
+    <footer>
+      <p>© 2023 YouTube Transcript & Summary Tool</p>
+    </footer>
+  </div>
+
+  <script src="{{ url_for('static', filename='js/script.js') }}"></script>
+</body>
+</html>
