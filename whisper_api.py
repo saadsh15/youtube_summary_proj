@@ -3,7 +3,7 @@ from pydub import AudioSegment
 from pydub.silence import split_on_silence
 import os
 
-OPENAI_API_KEY="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"
+OPENAI_API_KEY="you OpenAI key"
 upload_folder = "uploads"
 
 def split_audio(file_path, min_silence_len=500, silence_thresh=-40):
