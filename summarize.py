@@ -1,7 +1,7 @@
 import openai
 
 # Replace with your OpenAI API Key
-OPENAI_API_KEY="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"
+OPENAI_API_KEY="your open AI key"
 
 
 def summarize_transcription(transcription, summary_length, points=False):
